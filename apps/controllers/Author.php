@@ -22,8 +22,10 @@ class Author extends Controller
         $username=request('username');
         if(!(trim($username) and preg_match('/^[a-z0-9]{5,50}/',$username) and $username==strtolower($username))){
             $error[]="Please enter valid username and password";
+        }else{
+            $error[]="This username already exist ";
         }
-        if($error==0){
+        if(count($error)==0){
             $info=[
                 'username'=>$username,
                 'password'=>request('cpassword'),
@@ -34,6 +36,9 @@ class Author extends Controller
             ];
           
             $this->author->insert($info);
+        }else{
+            Session::set('error',$error);
+            redirect('author/create');
         }
         
         

@@ -1,6 +1,6 @@
 <?php 
 function request($key=''){
-    $obj=(object)['controller'=>'Author','method'=>'index','para'=>'','get'=>$_GET,'post'=>$_POST];    
+    $obj=(object)['controller'=>'login','method'=>'index','para'=>'','get'=>$_GET,'post'=>$_POST];    
     if(isset($_GET['url'])){
     $url=$_GET['url'];
     $url=explode('/',rtrim($url,'/'));
